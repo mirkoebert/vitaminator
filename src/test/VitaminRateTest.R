@@ -1,5 +1,5 @@
 library(testthat) 
-source("~/vitaminator/src/main/rate.R")
+source("../main/rate.R")
 
 test_that("Test Triglyceride red",{
   expect_equal(rateVitaminValue("Triglyceride", 10), "red")

@@ -1,7 +1,7 @@
 library(readr)
 library(data.table)
 
-Vitaminator_Data_Modell <- read_delim("~/Desktop/Vitaminator-Data-Modell.csv", 
+Vitaminator_Data_Modell <- read_delim("./Vitaminator-Data-Modell.csv", 
                                       delim = ";", 
                                       escape_double = FALSE, 
                                       locale = locale(decimal_mark = ",", grouping_mark = "."), 

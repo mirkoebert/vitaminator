@@ -1,7 +1,7 @@
 library(testthat) 
 
-source("~/vitaminator/src/main/rate.R")
+source("./src/main/rate.R")
 
-test_results <- test_dir("~/vitaminator/src/test", reporter="summary")
+test_results <- test_dir("./src/test", reporter="summary")
 
 

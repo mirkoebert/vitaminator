@@ -3,10 +3,10 @@ library(data.table)
 library(ggplot2)
 library(shiny)
 library(shinydashboard)
-source("~/vitaminator/src/main/rate.R")
+source("./src/main/rate.R")
 
 
-gesundheit_daten1 <- read_delim("~/Desktop/gesundheit-daten1.csv", 
+gesundheit_daten1 <- read_delim("./daten.csv", 
                                 delim = ";", 
                                 escape_double = FALSE, 
                                 col_types = cols(Date = col_date(format = "%d.%m.%Y")), 
