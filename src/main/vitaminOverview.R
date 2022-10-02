@@ -26,20 +26,24 @@ enrichWithStatisticValues = function(latestValues) {
   y = g[ , .N, by = Type ]
   setkey(y, Type)
   x = x[y]
+  cn = colnames(x)
+  cn[length(cn)] = "Count"
+  colnames(x) = cn
   
   y = g[ , median(Value), by = Type ]
   setkey(y, Type)
   x = x[y]
+  cn = colnames(x)
+  cn[length(cn)] = "Median"
+  colnames(x) = cn
   
   y = g[ , mean(Value), by = Type ]
   setkey(y, Type)
   x = x[y]
-  
   cn = colnames(x)
-  cn[6] = "Count"
-  cn[7] = "Median"
-  cn[8] = "Mittelwert"
+  cn[length(cn)] = "Mittelwert"
   colnames(x) = cn
+  
  
   x = enricheWithBorders(x) 
   return(x)
