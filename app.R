@@ -1,8 +1,8 @@
 library(shiny)
 library(shinydashboard)
-source("./R/process.R")
-source("./R/rate.R")
-source("./R/vitaminOverview.R")
+source("./vitaminatorApp/R/process.R")
+source("./vitaminatorApp/R/rate.R")
+source("./vitaminatorApp/R/vitaminOverview.R")
 
 ui <- dashboardPage(
   dashboardHeader(title = "Vitaminator"),
@@ -45,17 +45,10 @@ ui <- dashboardPage(
     tabItem(
       tabName = "addNewData",
       mainPanel(
-        textInput("company", "Company Name", ""),
-        textInput("poc", "Point of Contact", ""),
-        textInput("sales_rep", "Sales Rep", ""),
-        sliderInput(
-          'chanceofsale',
-          "Probability of Sale",
-          min = 1,
-          max = 10,
-          value = 5
-        ),
-        actionButton("submit", strong("Submit"))
+        selectInput("type", "Type", VitaminModel$Name),
+        textInput("value", "Wert", ""),
+        dateInput("date", "Date",  value = Sys.Date()),
+        actionButton("submit", strong("Save"), icon("refresh"))
       )
     )
   ))
@@ -135,6 +128,8 @@ server <- function(input, output) {
   #observeEvent(input$modelTable_rows_selected, {
   #  str(input$table1_rows_selected)
   #})
+  
+  
 }
 
 
