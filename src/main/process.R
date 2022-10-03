@@ -13,7 +13,8 @@ gesundheit_daten1 <- read_delim("./daten.csv",
                                 locale = locale(decimal_mark = ",", grouping_mark = "."), 
                                 trim_ws = TRUE)
 
-g  = data.table(gesundheit_daten1)
+g = data.table(gesundheit_daten1)
+g = Filter(function(x)!all(is.na(x)), g)
 vitaminD = g[Type == "Vitamin D"]
 vitaminD = vitaminD[order(Date)]
 
