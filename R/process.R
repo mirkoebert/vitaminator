@@ -3,7 +3,7 @@ library(data.table)
 library(ggplot2)
 library(shiny)
 library(shinydashboard)
-source("./src/main/rate.R")
+source("./R/rate.R")
 
 
 gesundheit_daten1 <- read_delim("./daten.csv", 

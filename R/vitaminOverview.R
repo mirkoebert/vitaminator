@@ -51,11 +51,10 @@ enrichWithStatisticValues = function(latestValues) {
 
 enricheWithBorders = function(enrichedLatestValues) {
   x = enrichedLatestValues
-  setkey(y, Type)
+  setkey(x, Type)
   x$Unit = NULL
   
   y = VitaminModel
-  
   setkey(y, Name)
   x = x[y]
   

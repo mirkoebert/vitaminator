@@ -1,8 +1,8 @@
 library(shiny)
 library(shinydashboard)
-source("./src/main/process.R")
-source("./src/main/rate.R")
-source("./src/main/vitaminOverview.R")
+source("./R/process.R")
+source("./R/rate.R")
+source("./R/vitaminOverview.R")
 
 ui <- dashboardPage(
   dashboardHeader(title = "Vitaminator"),
