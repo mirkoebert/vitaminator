@@ -3,7 +3,7 @@ library(data.table)
 library(ggplot2)
 library(shiny)
 library(shinydashboard)
-#source("./vitaminatorApp/R/rate.R")
+
 
 
 gesundheit_daten1 <- read_delim("./daten.csv", 
