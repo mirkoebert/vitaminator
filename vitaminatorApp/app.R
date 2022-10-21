@@ -27,13 +27,13 @@ ui <- dashboardPage(
     ),
     
 
-    tabItem(tabName = "allDataDetails", fluidRow(column(
-      12, dataTableOutput('modelTable')
-    ))),
+    tabItem(tabName = "allDataDetails",  fluidPage(
+      DT::dataTableOutput("modelTable"),
+      plotOutput('timelinePlot')
+    )),
     
     tabItem(tabName = "allData", fluidPage(
-      DT::dataTableOutput("table"),
-      plotOutput('plot2')
+      DT::dataTableOutput("table")
     )),
     
     tabItem(tabName = "editData", fluidPage(
@@ -53,6 +53,8 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output) {
+  modelTable = enrichWithStatisticValues(getLatestMesurmentsByType())[order(-Date)]
+  
   output$plot2 <- renderPlot(print(p))
   
   output$vitaminDlatestBox <- renderInfoBox({
@@ -119,10 +121,22 @@ server <- function(input, output) {
   
   output$table = DT::renderDataTable({g[order(-Date)]})
   
-  output$modelTable = renderDataTable(enrichWithStatisticValues(getLatestMesurmentsByType())[order(-Date)])
+  output$modelTable = renderDataTable(modelTable)
   
-  observeEvent(input$modelTable_rows_selected, {
-    print(input$modelTable_rows_selected)
+  #observeEvent(input$modelTable_rows_selected, {
+   # print(input$modelTable_rows_selected)
+    
+  #})
+  
+  output$timelinePlot <- renderPlot({
+    s = input$modelTable_rows_selected
+    print(s)
+    print(modelTable[s]$Type)
+    plot(
+      g[Type == modelTable[s]$Type,]$Date, 
+      g[Type == modelTable[s]$Type,]$Value,
+      type = "b"
+      )
   })
   
 }
