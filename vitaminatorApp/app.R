@@ -121,21 +121,20 @@ server <- function(input, output) {
   
   output$table = DT::renderDataTable({g[order(-Date)]})
   
-  output$modelTable = renderDataTable(modelTable)
+  output$modelTable = renderDataTable(modelTable, selection = "single")
   
-  #observeEvent(input$modelTable_rows_selected, {
-   # print(input$modelTable_rows_selected)
-    
-  #})
+
   
   output$timelinePlot <- renderPlot({
     s = input$modelTable_rows_selected
     print(s)
-    print(modelTable[s]$Type)
+    mType = modelTable[s]$Type
     plot(
-      g[Type == modelTable[s]$Type,]$Date, 
-      g[Type == modelTable[s]$Type,]$Value,
-      type = "b"
+      g[Type == modelTable[s]$Type,][order(-Date)]$Date, 
+      g[Type == modelTable[s]$Type,][order(-Date)]$Value,
+      type = "b",
+      xlab = 'Time',
+      ylab = paste(mType,'in', modelTable[s]$Unit)
       )
   })
   
