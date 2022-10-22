@@ -127,14 +127,15 @@ server <- function(input, output) {
   
   output$timelinePlot <- renderPlot({
     s = input$modelTable_rows_selected
-    print(s)
     mType = modelTable[s]$Type
     plot(
-      g[Type == modelTable[s]$Type,][order(-Date)]$Date, 
-      g[Type == modelTable[s]$Type,][order(-Date)]$Value,
+      g[Type == mType,][order(-Date)]$Date, 
+      g[Type == mType,][order(-Date)]$Value,
       type = "b",
       xlab = 'Time',
-      ylab = paste(mType,'in', modelTable[s]$Unit)
+      ylab = getYtitle(mType, modelTable[s]$Unit),
+      col = 'green'
+      
       )
   })
   

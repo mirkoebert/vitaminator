@@ -45,4 +45,10 @@ getLatestTrend = function(type){
   return("arrow-down")
 }
 
-  
+getYtitle = function(mType, mUnit){
+  result = mType
+  if (!is.na(mUnit)){
+    result = paste(mType,'in', mUnit)
+  }
+  return(result)
+}
