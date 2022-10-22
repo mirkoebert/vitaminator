@@ -52,3 +52,11 @@ getYtitle = function(mType, mUnit){
   }
   return(result)
 }
+
+getYMaxForPlot = function(mType){
+  highBorder = VitaminModel[Name == mType]$`Border High Red`
+  if (is.na(highBorder)) {
+    highBorder = max(g[Type == mType]$Value)
+  }
+  return(highBorder * 1.2)
+}

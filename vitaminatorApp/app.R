@@ -134,8 +134,8 @@ server <- function(input, output) {
       type = "b",
       xlab = 'Time',
       ylab = getYtitle(mType, modelTable[s]$Unit),
+      ylim = c(0, getYMaxForPlot(mType)),
       col = 'green'
-      
       )
   })
   

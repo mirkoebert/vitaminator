@@ -1,12 +1,12 @@
 library(readr)
 library(data.table)
 
-Vitaminator_Data_Modell <- read_delim("./Vitaminator-Data-Modell.csv", 
+VitaminModel <- read_delim("./Vitaminator-Data-Modell.csv", 
                                       delim = ";", 
                                       escape_double = FALSE, 
                                       locale = locale(decimal_mark = ",", grouping_mark = "."), 
                                       trim_ws = TRUE)
-VitaminModel = data.table(Vitaminator_Data_Modell)
+VitaminModel = data.table(VitaminModel)
 
 getLatestOfType = function(type){
   typeOnly = g[Type == type]
