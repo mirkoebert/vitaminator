@@ -135,8 +135,26 @@ server <- function(input, output) {
       xlab = 'Time',
       ylab = getYtitle(mType, modelTable[s]$Unit),
       ylim = c(0, getYMaxForPlot(mType)),
-      col = 'green'
+      col = 'green',
+      lwd = 3
       )
+    
+    highBorderRed = VitaminModel[Name == mType]$`Border High Red`
+    if(!is.na(highBorderRed)){
+      abline(h = highBorderRed, col = "red", lty = 2)
+    }
+    highBorderY = VitaminModel[Name == mType]$`Border High Yellow`
+    if(!is.na(highBorderY)){
+      abline(h = highBorderY, col = "yellow", lty = 3)
+    }
+    lowBorderRed = VitaminModel[Name == mType]$`Border Low Red`
+    if(!is.na(lowBorderRed)){
+      abline(h = lowBorderRed, col = "red", lty = 2)
+    }
+    lowhBorderY = VitaminModel[Name == mType]$`Border Low Yellow`
+    if(!is.na(lowhBorderY)){
+      abline(h = lowhBorderY, col = "yellow", lty = 3)
+    }
   })
   
 }
