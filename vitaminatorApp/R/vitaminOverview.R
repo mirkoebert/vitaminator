@@ -8,18 +8,18 @@ VitaminModel <- read_delim("./Vitaminator-Data-Modell.csv",
                                       trim_ws = TRUE)
 VitaminModel = data.table(VitaminModel)
 
-getLatestOfType = function(type){
+getLatestOfType = function(type, g){
   typeOnly = g[Type == type]
   typeLatest = typeOnly[order(-Date)][1,]  
 }
 
 
-getLatestMesurmentsByType = function() {
+getLatestMesurmentsByType = function(g) {
   return(unique(g[order(-Date)], by="Type"));
 }
 
 
-enrichWithStatisticValues = function(latestValues) {
+enrichWithStatisticValues = function(latestValues, g) {
   x = latestValues
   setkey(x, Type)
   

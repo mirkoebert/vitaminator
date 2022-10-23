@@ -14,15 +14,15 @@ readDataFromFile = function(filepath){
   g = Filter(function(x)!all(is.na(x)), g)
 }
 
-g = readDataFromFile('./demo-data.csv')
+#g = readDataFromFile('./demo-data.csv')
 
-getLatestOfType = function(type){
+getLatestOfType = function(type, g){
   typeOnly = g[Type == type]
   typeLatest = typeOnly[order(-Date)][1,]  
 }
 
 
-getLatestTrend = function(type){
+getLatestTrend = function(type, g){
   typeOnly = g[Type == type]
   typeSecondLatest = typeOnly[order(-Date)][2,]
   typeLatest = typeOnly[order(-Date)][1,]
@@ -42,7 +42,7 @@ getYtitle = function(mType, mUnit){
   return(result)
 }
 
-getYMaxForPlot = function(mType){
+getYMaxForPlot = function(mType, g){
   highBorder = VitaminModel[Name == mType]$`Border High Red`
   maxValue = max(g[Type == mType]$Value)
   

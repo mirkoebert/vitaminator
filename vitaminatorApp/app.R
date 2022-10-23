@@ -38,33 +38,35 @@ ui <- dashboardPage(
     )),
     
     tabItem(tabName = "editData", fluidPage(
-      fileInput("file1", "Choose CSV File", accept = ".csv"),
-    )),
+      fileInput("file1", "Choose Data File (CSV)", accept = ".csv"),
+      tableOutput("head")
+    ))
     
-    tabItem(
-      tabName = "addNewData",
-      mainPanel(
-        selectInput("type", "Type", VitaminModel$Name),
-        textInput("value", "Wert", ""),
-        dateInput("date", "Date",  value = Sys.Date()),
-        actionButton("submit", strong("Save"), icon("refresh"))
-      )
-    )
   ))
 )
 
 server <- function(input, output) {
-  modelTable = enrichWithStatisticValues(getLatestMesurmentsByType())[order(-Date)]
+  g <- reactive({
+    print(input$file1)
+    req(input$file1)
+    readDataFromFile(input$file1$datapath)
+  })
+  
+  output$head <- renderTable({
+    head(g(), 5)
+  })
+  
+  #modelTable = enrichWithStatisticValues(getLatestMesurmentsByType(g()), g())[order(-Date)]
   
   output$plot2 <- renderPlot(print(p))
   
   output$vitaminDlatestBox <- renderInfoBox({
     type = "Vitamin D"
-    latest = getLatestOfType(type)
+    latest = getLatestOfType(type, g())
     infoBox(
       latest$Type,
       paste(latest$Value, latest$Unit),
-      icon = icon(getLatestTrend(type)),
+      icon = icon(getLatestTrend(type, g())),
       color = rateVitaminValue(type, latest$Value),
       fill = TRUE
     )
@@ -72,11 +74,11 @@ server <- function(input, output) {
   
   output$cholesterinTotalLatestBox <- renderInfoBox({
     type = "Gesamt Cholesterin"
-    latest = getLatestOfType(type)
+    latest = getLatestOfType(type, g())
     infoBox(
       latest$Type,
       paste(latest$Value, latest$Unit),
-      icon = icon(getLatestTrend(type)),
+      icon = icon(getLatestTrend(type, g())),
       color = rateVitaminValue(type, latest$Value),
       fill = TRUE
     )
@@ -84,11 +86,11 @@ server <- function(input, output) {
   
   output$cholesterinHdlLatestBox <- renderInfoBox({
     type = "HDL Cholesterin"
-    latest = getLatestOfType(type)
+    latest = getLatestOfType(type, g())
     infoBox(
       latest$Type,
       paste(latest$Value, latest$Unit),
-      icon = icon(getLatestTrend(type)),
+      icon = icon(getLatestTrend(type, g())),
       color = rateVitaminValue(type, latest$Value),
       fill = TRUE
     )
@@ -96,20 +98,19 @@ server <- function(input, output) {
   
   output$cholesterinLdlLatestBox <- renderInfoBox({
     type = "LDL Cholesterin"
-    latest = getLatestOfType(type)
+    latest = getLatestOfType(type, g())
     infoBox(
       latest$Type,
       paste(latest$Value, latest$Unit),
-      icon = icon(getLatestTrend(type)),
+      icon = icon(getLatestTrend(type, g())),
       color = rateVitaminValue(type, latest$Value),
       fill = TRUE
     )
   })
   
-  
   output$cholesterinRatioTotalHdlLatestBox <- renderInfoBox({
     type = "Cholesterin Ratio Gesamt / HDL"
-    latestValue = getLatestOfType("Gesamt Cholesterin")$Value / getLatestOfType("HDL Cholesterin")$Value
+    latestValue = getLatestOfType("Gesamt Cholesterin", g())$Value / getLatestOfType("HDL Cholesterin", g())$Value
     infoBox(
       type,
       latestValue,
@@ -119,24 +120,24 @@ server <- function(input, output) {
     )
   })
   
+  output$table = DT::renderDataTable({g()[order(-Date)]})
   
-  output$table = DT::renderDataTable({g[order(-Date)]})
-  
-  output$modelTable = renderDataTable(modelTable, selection = "single")
-  
-
+  output$modelTable = renderDataTable({
+    modelTable = enrichWithStatisticValues(getLatestMesurmentsByType(g()), g())[order(-Date)]
+  }, selection = "single")
   
   output$timelinePlot <- renderPlot({
     s = input$modelTable_rows_selected
     if(is.null(s)){s = 1}
+    modelTable = enrichWithStatisticValues(getLatestMesurmentsByType(g()), g())[order(-Date)]
     mType = modelTable[s]$Type
     plot(
-      g[Type == mType,][order(-Date)]$Date, 
-      g[Type == mType,][order(-Date)]$Value,
+      g()[Type == mType,][order(-Date)]$Date, 
+      g()[Type == mType,][order(-Date)]$Value,
       type = "b",
       xlab = 'Time',
       ylab = getYtitle(mType, modelTable[s]$Unit),
-      ylim = c(0, getYMaxForPlot(mType)),
+      ylim = c(0, getYMaxForPlot(mType, g())),
       col = 'green',
       lwd = 3
       )
@@ -158,6 +159,7 @@ server <- function(input, output) {
       abline(h = lowhBorderY, col = "yellow", lty = 3)
     }
   })
+  
   
 }
 
