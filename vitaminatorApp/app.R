@@ -2,6 +2,7 @@ library(shiny)
 library(shinydashboard)
 library(DT)
 
+
 ui <- dashboardPage(
   dashboardHeader(title = "Vitaminator"),
   dashboardSidebar(
@@ -37,7 +38,7 @@ ui <- dashboardPage(
     )),
     
     tabItem(tabName = "editData", fluidPage(
-      
+      fileInput("file1", "Choose CSV File", accept = ".csv"),
     )),
     
     tabItem(

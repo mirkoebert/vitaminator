@@ -1,21 +1,20 @@
 library(readr)
 library(data.table)
-library(ggplot2)
-library(shiny)
-library(shinydashboard)
 
 
+readDataFromFile = function(filepath){
+  g <- read_delim(filepath, 
+                    delim = ";", 
+                    escape_double = FALSE, 
+                    col_types = cols(Date = col_date(format = "%d.%m.%Y")), 
+                    locale = locale(decimal_mark = "."), 
+                    trim_ws = TRUE)
+  
+  g = data.table(g)
+  g = Filter(function(x)!all(is.na(x)), g)
+}
 
-g <- read_delim("./daten.csv", 
-                                delim = ";", 
-                                escape_double = FALSE, 
-                                col_types = cols(Date = col_date(format = "%d.%m.%Y")), 
-                                locale = locale(decimal_mark = "."), 
-                                trim_ws = TRUE)
-
-g = data.table(g)
-g = Filter(function(x)!all(is.na(x)), g)
-
+g = readDataFromFile('./demo-data.csv')
 
 getLatestOfType = function(type){
   typeOnly = g[Type == type]
