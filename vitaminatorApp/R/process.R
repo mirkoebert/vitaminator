@@ -10,21 +10,11 @@ g <- read_delim("./daten.csv",
                                 delim = ";", 
                                 escape_double = FALSE, 
                                 col_types = cols(Date = col_date(format = "%d.%m.%Y")), 
-                                locale = locale(decimal_mark = ",", grouping_mark = "."), 
+                                locale = locale(decimal_mark = "."), 
                                 trim_ws = TRUE)
 
 g = data.table(g)
 g = Filter(function(x)!all(is.na(x)), g)
-vitaminD = g[Type == "Vitamin D"]
-vitaminD = vitaminD[order(Date)]
-
-ds = g[Type == "Vitamin D Stoffwechsel"]
-ds = ds[order(Date)]
-
-blutfett = g[g$Type %in% c("LDL Cholesterin", "HDL Cholesterin", "Gesamt Cholesterin" , "Triglyceride" )]
-blutfett = blutfett[order(Date)]
-blutfettWide = reshape(blutfett[ , c ("Date", "Type", "Value")], direction="wide", idvar = "Date", timevar = "Type")
-blutfettWide[ , cholesterinFactor:=(blutfettWide$`Value.Gesamt Cholesterin` / blutfettWide$`Value.HDL Cholesterin`) ]
 
 
 getLatestOfType = function(type){

@@ -1,61 +1,43 @@
-Person;Date;Type;Value;Unit;;
-ME;8.5.2022;Vitamin D;38,76;ng/ml;;
-ME;8.5.2022;Vitamin D Stoffwechsel;8,3;;;
-ME;5.10.2021;Vitamin D;37,5;ng/ml;;
-ME;5.10.2021;Vitamin D Stoffwechsel;7,47;;;
-ME;1.2.2022;Vitamin D;66,16;ng/ml;;
-ME;1.2.2022;Vitamin D Stoffwechsel;7,47;;;
-ME;30.8.2021;Vitamin D;42,15;ng/ml;;
-ME;30.8.2021;Vitamin D Stoffwechsel;7,85;;;
-ME;16.8.2021;Gesamt Cholesterin;4,0;mmol/l;;
-ME;16.8.2021;LDL Cholesterin;2,4;mmol/l;;
-ME;16.8.2021;HDL Cholesterin;0,9;mmol/l;;
-ME;16.8.2021;Triglyceride;1,5;mmol/l;;
-ME;9.2.2022;Gesamt Cholesterin;4,2;mmol/l;;
-ME;9.2.2022;LDL Cholesterin;2,1;mmol/l;;
-ME;9.2.2022;HDL Cholesterin;1,0;mmol/l;;
-ME;9.2.2022;Triglyceride;2,3;mmol/l;;
-ME;22.10.2021;HDL Cholesterin;1,06;mmol/l;;
-ME;22.10.2021;LDL Cholesterin;4,16;mmol/l;;
-ME;22.10.2021;Triglyceride;1,73;mmol/l;;
-ME;22.10.2021;Gesamt Cholesterin;5,91;mmol/l;;
-ME;22.10.2021;Vitamin D;61,6;ng/ml;;
-ME;22.10.2021;ERY;5,91;mmol/l;;
-ME;22.10.2021;GFRK;4,85;Tpt/l;;
-ME;22.10.2021;GGT;1,01;µmol/sl;;
-ME;22.10.2021;HB;9,4;mmol/l;;
-ME;22.10.2021;HK;0,45;l/l;;
-ME;22.10.2021;HOMO;8,6;µmol/l;;
-ME;22.10.2021;HS;415;µmol/l;;
-ME;22.10.2021;KREAE;87;µmol/l;;
-ME;22.10.2021;LEUK;6,01;Gpt/l;;
-ME;22.10.2021;MCH;1,94;fmol;;
-ME;22.10.2021;MCV;91,8;fl;;
-ME;22.10.2021;PGLUN;5,79;mmol/l;;
-ME;22.10.2021;THRO;225;Gpt/l;;
-ME;22.10.2021;VB12;448;pg/ml;;
-BKE;22.10.2021;ERY;4,15;mmol/l;;
-BKE;22.10.2021;GFRK;109;Tpt/l;;
-BKE;22.10.2021;GGT;0,20;µmol/sl;;
-BKE;22.10.2021;HB;8,6;mmol/l;;
-BKE;26.10.2021;HK;0,41;l/l;;
-BKE;26.10.2021;HGB;1,1;µl/l;;
-BKE;26.10.2021;HS;311;µmol/l;;
-BKE;26.10.2021;KREAE;54;µmol/l;;
-BKE;26.10.2021;LEUK;6,21;Gpt/l;;
-BKE;26.10.2021;MCH;2,07;fmol;;
-BKE;26.10.2021;MCV;98,1;fl;;
-BKE;26.10.2021;PGLUN;4,71;mmol/l;;
-BKE;26.10.2021;THRO;224;Gpt/l;;
-BKE;22.10.2021;VB12;559;pg/ml;;
-BKE;22.10.2021;HDL Cholesterin;1,34;mmol/l;;
-BKE;22.10.2021;LDL Cholesterin;3,26;mmol/l;;
-BKE;22.10.2021;Triglyceride;0,86;mmol/l;;
-ME;22.10.2021;Gesamt Cholesterin;5,00;mmol/l;;
-BKE;26.10.2021;Vitamin D;54,4;ng/ml;;
-BKE;26.10.2021;MGI;2,34;mmol/l;;
-BKE;26.10.2021;MGIA;11;%;;
-BKE;26.10.2021;SEI;183;µg/l;;
-BKE;26.10.2021;SEIA;58;%;;
-BKE;26.10.2021;ZNI;13,7;mg/l;;
-BKE;26.10.2021;ZNIA;18;%;;
+Date;Type;Value;Unit
+8.5.2022;Vitamin D;38.76;ng/ml
+8.5.2022;Vitamin D Stoffwechsel;8.3;
+5.10.2021;Vitamin D;37.5;ng/ml
+5.10.2021;Vitamin D Stoffwechsel;7.47;
+1.2.2022;Vitamin D;66.16;ng/ml
+1.2.2022;Vitamin D Stoffwechsel;7.47;
+30.8.2021;Vitamin D;42.15;ng/ml
+30.8.2021;Vitamin D Stoffwechsel;7.85;
+16.8.2021;Gesamt Cholesterin;4;mmol/l
+16.8.2021;LDL Cholesterin;2.4;mmol/l
+16.8.2021;HDL Cholesterin;0.9;mmol/l
+16.8.2021;Triglyceride;1.5;mmol/l
+9.2.2022;Gesamt Cholesterin;4.2;mmol/l
+9.2.2022;LDL Cholesterin;2.1;mmol/l
+9.2.2022;HDL Cholesterin;1;mmol/l
+9.2.2022;Triglyceride;2.3;mmol/l
+22.10.2021;HDL Cholesterin;1.06;mmol/l
+22.10.2021;LDL Cholesterin;4.16;mmol/l
+22.10.2021;Triglyceride;1.73;mmol/l
+22.10.2021;Gesamt Cholesterin;5.91;mmol/l
+22.10.2021;Vitamin D;61.6;ng/ml
+22.10.2021;ERY;5.91;mmol/l
+22.10.2021;GFRK;4.85;Tpt/l
+22.10.2021;GGT;1.01;µmol/sl
+22.10.2021;HB;9.4;mmol/l
+22.10.2021;HK;0.45;l/l
+22.10.2021;HOMO;8.6;µmol/l
+22.10.2021;HS;415;µmol/l
+22.10.2021;KREAE;87;µmol/l
+22.10.2021;LEUK;6.01;Gpt/l
+22.10.2021;MCH;1.94;fmol
+22.10.2021;MCV;91.8;fl
+22.10.2021;PGLUN;5.79;mmol/l
+22.10.2021;THRO;225;Gpt/l
+22.10.2021;Vitamin B12;47.503;
+12.06.2022;Vitamin B12;136;
+29.5.2022;Gesamt Cholesterin;5.1;
+29.5.2022;LDL Cholesterin;3.4;
+29.5.2022;HDL Cholesterin;1;
+29.5.2022;Triglyceride;1.5;
+25.9.2022;Vitamin D;39.79;
+25.9.2022;Vitamin D Stoffwechsel;8.48;

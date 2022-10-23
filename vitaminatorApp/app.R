@@ -127,6 +127,7 @@ server <- function(input, output) {
   
   output$timelinePlot <- renderPlot({
     s = input$modelTable_rows_selected
+    if(is.null(s)){s = 1}
     mType = modelTable[s]$Type
     plot(
       g[Type == mType,][order(-Date)]$Date, 
