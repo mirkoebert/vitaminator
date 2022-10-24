@@ -38,6 +38,7 @@ ui <- dashboardPage(
     )),
     
     tabItem(tabName = "editData", fluidPage(
+      # TODO add button to load demo data
       fileInput("file1", "Choose Data File (CSV)", accept = ".csv"),
       tableOutput("head")
     ))
@@ -55,8 +56,6 @@ server <- function(input, output) {
   output$head <- renderTable({
     head(g(), 5)
   })
-  
-  #modelTable = enrichWithStatisticValues(getLatestMesurmentsByType(g()), g())[order(-Date)]
   
   output$plot2 <- renderPlot(print(p))
   

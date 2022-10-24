@@ -1,7 +1,6 @@
 library(readr)
 library(data.table)
 
-
 readDataFromFile = function(filepath){
   g <- read_delim(filepath, 
                     delim = ";", 
@@ -14,10 +13,9 @@ readDataFromFile = function(filepath){
   g = Filter(function(x)!all(is.na(x)), g)
 }
 
-#g = readDataFromFile('./demo-data.csv')
-
 getLatestOfType = function(type, g){
   typeOnly = g[Type == type]
+  # TODO add Unit
   typeLatest = typeOnly[order(-Date)][1,]  
 }
 
