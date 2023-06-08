@@ -1,3 +1,5 @@
+find.package('data.table', quiet=TRUE)
+
 library(shiny)
 library(shinydashboard)
 library(DT)
@@ -7,12 +9,13 @@ ui <- dashboardPage(
   dashboardHeader(title = "Vitaminator"),
   dashboardSidebar(
     sidebarMenu(
+      # icons: https://fontawesome.com/v5/search?q=heart&o=r&m=free
       menuItem("Dashboard",         tabName = "dashboard",      icon = icon("dashboard")),
-      menuItem("Immun System",      tabName = "immunSystem",    icon = icon("fa-regular fa-shield-virus")),
-      menuItem("Heart",             tabName = "immunSystem",    icon = icon("fa-light fa-heart")),
+      menuItem("Immun System",      tabName = "immunSystem",    icon = icon("fas fa-shield-virus")),
+      menuItem("Heart",             tabName = "immunSystem",    icon = icon("fas fa-heart")),
       menuItem("All Data Details",  tabName = "allDataDetails", icon = icon("th")),
       menuItem("All Data",          tabName = "allData",        icon = icon("th")),
-      menuItem("Edit Data",         tabName = "editData",       icon = icon("th"))
+      menuItem("Load Data from File",   tabName = "editData",       icon = icon("fas fa-file-csv"))
     )
   ),
   dashboardBody(tabItems(
