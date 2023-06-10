@@ -46,3 +46,5 @@ getYMaxForPlot = function(mType, g){
   
   return(max(c(highBorder, maxValue), na.rm = T) * 1.2)
 }
+
+

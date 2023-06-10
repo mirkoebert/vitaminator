@@ -15,7 +15,7 @@ ui <- dashboardPage(
       menuItem("Heart",             tabName = "immunSystem",    icon = icon("fas fa-heart")),
       menuItem("All Data Details",  tabName = "allDataDetails", icon = icon("th")),
       menuItem("All Data",          tabName = "allData",        icon = icon("th")),
-      menuItem("Load Data from File",   tabName = "editData",       icon = icon("fas fa-file-csv"))
+      menuItem("Load Data from File",   tabName = "editData",       icon = icon("fas fa-file-csv"), selected = T)
     )
   ),
   dashboardBody(tabItems(
@@ -53,6 +53,7 @@ server <- function(input, output) {
   g <- reactive({
     print(input$file1)
     req(input$file1)
+    saveLastLoadedFile(input$file1$datapath)
     readDataFromFile(input$file1$datapath)
   })
   
